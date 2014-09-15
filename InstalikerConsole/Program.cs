@@ -126,18 +126,19 @@ namespace InstalikerConsole
                                 rateLimitExceeded = likeResponse.RateLimitRemaining < 4971;
                                 SendToLoggerAndConsole("Like response: " + likeResponse.Meta.Code.ToString() + " For token: " + configData.token.ToString());
                                 SendToLoggerAndConsole("You have : " + likeResponse.RateLimitRemaining.ToString() + " remaining on token: " + configData.token.ToString());
+                                SendToLoggerAndConsole("You are working on keyword: " + currentKeyword); 
                                 if (likeResponse.Meta.Code != System.Net.HttpStatusCode.OK)
                                 {
                                     SendToLoggerAndConsole("Because the like response was: " + likeResponse.Meta.Code.ToString() + " For token: " + configData.token.ToString());
                                     SendToLoggerAndConsole("We're going to wait: " + (10 * badResponseCount).ToString() + " minutes before we like another shot");
-                                    await Task.Delay(new TimeSpan(0, 10 * badResponseCount, 0)).ConfigureAwait(continueOnCapturedContext: false);
+                                    await Task.Delay(new TimeSpan(0, 30 * badResponseCount, 0)).ConfigureAwait(continueOnCapturedContext: false);
                                     badResponseCount++;
                                 }
                                 else
                                 {
                                     badResponseCount = 1;
                                     SendToLoggerAndConsole("Just liked " + image.Id + " For token: " + configData.token.ToString());
-                                    await Task.Delay(new TimeSpan(0, 0, new Random(DateTime.Now.Millisecond).Next(100, 160))).ConfigureAwait(continueOnCapturedContext: false);
+                                    await Task.Delay(new TimeSpan(0, 0, new Random(DateTime.Now.Millisecond).Next(150, 250))).ConfigureAwait(continueOnCapturedContext: false);
                                 }
                             }
                             catch
