@@ -130,7 +130,7 @@ namespace InstalikerConsole
                                 if (likeResponse.Meta.Code != System.Net.HttpStatusCode.OK)
                                 {
                                     SendToLoggerAndConsole("Because the like response was: " + likeResponse.Meta.Code.ToString() + " For token: " + configData.token.ToString());
-                                    SendToLoggerAndConsole("We're going to wait: " + (10 * badResponseCount).ToString() + " minutes before we like another shot");
+                                    SendToLoggerAndConsole("We're going to wait: " + (30 * badResponseCount).ToString() + " minutes before we like another shot");
                                     await Task.Delay(new TimeSpan(0, 30 * badResponseCount, 0)).ConfigureAwait(continueOnCapturedContext: false);
                                     badResponseCount++;
                                 }
