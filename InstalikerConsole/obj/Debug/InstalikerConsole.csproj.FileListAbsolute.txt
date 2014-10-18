@@ -20,3 +20,4 @@ c:\users\asus\documents\visual studio 2013\Projects\InstalikerConsole\Instaliker
 c:\users\asus\documents\visual studio 2013\Projects\InstalikerConsole\InstalikerConsole\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 c:\users\asus\documents\visual studio 2013\Projects\InstalikerConsole\InstalikerConsole\bin\Debug\System.Net.Http.Extensions.xml
 c:\users\asus\documents\visual studio 2013\Projects\InstalikerConsole\InstalikerConsole\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\Asus\Documents\Visual Studio 2013\Projects\InstalikerConsole\InstalikerConsole\obj\Debug\InstalikerConsole.csprojResolveAssemblyReference.cache

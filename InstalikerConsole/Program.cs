@@ -15,6 +15,7 @@ namespace InstalikerConsole
         public string id { get; set; }
         public string secret { get; set; }
         public string token { get; set; }
+        public int index { get; set; }
     }
 
 
@@ -39,6 +40,13 @@ namespace InstalikerConsole
                     new InstaConfig(){id="65b565bfed814925b592f37b9e27671a", secret="c69ae0e7a7924c87ba6a5ef7b37272ef" , token="963639.65b565b.d8a1d5122efa499ebef563ed0174d368"},
                     new InstaConfig(){id="266c9daf6080444680810604a28751a5", secret="b0b267e3ac5e4e07af5ea28010c7b58b" , token="963639.266c9da.0ae24a30c9d54d3ba1a6b12e83136cfc"},
                 };
+
+            int i = 0;
+            foreach (var item in configs)
+            {
+                item.index = i;
+                i++;
+            }
 
             Console.WriteLine("What would you like to use for config?");
             int configIndex = Convert.ToInt32(Console.ReadLine());
@@ -126,7 +134,8 @@ namespace InstalikerConsole
                                 rateLimitExceeded = likeResponse.RateLimitRemaining < 4971;
                                 SendToLoggerAndConsole("Like response: " + likeResponse.Meta.Code.ToString() + " For token: " + configData.token.ToString());
                                 SendToLoggerAndConsole("You have : " + likeResponse.RateLimitRemaining.ToString() + " remaining on token: " + configData.token.ToString());
-                                SendToLoggerAndConsole("You are working on keyword: " + currentKeyword); 
+                                SendToLoggerAndConsole("You are working on keyword: " + currentKeyword);
+                                SendToLoggerAndConsole("Currently on Index: " + configData.index.ToString());
                                 if (likeResponse.Meta.Code != System.Net.HttpStatusCode.OK)
                                 {
                                     SendToLoggerAndConsole("Because the like response was: " + likeResponse.Meta.Code.ToString() + " For token: " + configData.token.ToString());
@@ -138,7 +147,7 @@ namespace InstalikerConsole
                                 {
                                     badResponseCount = 1;
                                     SendToLoggerAndConsole("Just liked " + image.Id + " For token: " + configData.token.ToString());
-                                    await Task.Delay(new TimeSpan(0, 0, new Random(DateTime.Now.Millisecond).Next(150, 250))).ConfigureAwait(continueOnCapturedContext: false);
+                                    await Task.Delay(new TimeSpan(0, 0, new Random(DateTime.Now.Millisecond).Next(200, 300))).ConfigureAwait(continueOnCapturedContext: false);
                                 }
                             }
                             catch
